@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import java.util.HashMap;
 
-public class CashRegisterTester {
+public class CashRegisterTester{
 	
 	private static HashMap<MonetaryUnit, Integer> l;
 	
