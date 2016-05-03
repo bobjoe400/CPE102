@@ -1,34 +1,15 @@
 package lab5;
 
-import java.util.ArrayList;
-
-public class Student {
+public class Student extends Person{
 	
-	private String name;
-	private ArrayList<Double> grades;
+	private String major;
 	
-	public Student(String name){
-		grades = new ArrayList<Double>();
-		this.name = name;
-	}
-	
-	public void addGrade(double grade){
-		grades.add(grade);
-	}
-	
-	public double getGrade(){
-		double grade = 0;
-		for(double d: grades){
-			grade+=d;
-		}
-		return grade;
-	}
-	
-	public String getName(){
-		return name;
+	public Student(String name, int birth, String major){
+		super(name,birth);
+		this.major = major;
 	}
 	
 	public String toString(){
-		return ""+getName()+": "+getGrade();
+		return "Student[super="+super.toString()+",major="+major+"]";
 	}
 }
