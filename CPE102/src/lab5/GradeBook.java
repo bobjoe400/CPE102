@@ -17,9 +17,18 @@ public class GradeBook {
 			book.add(new Student(input));
 		}
 		for(Student s: book){
-			System.out.println("Enter scores for "+s.getName()+", Q to quit");
+			System.out.println("Enter scores for "+s.getName()+", Q to quit:");
 			String[] input = in.nextLine().split(" ");
+			double min = Double.MAX_VALUE;
+			int skip = 0;
 			for(int i = 0; i < input.length -1; i++){
+				if(Double.parseDouble(input[i]) < min){
+					min = Double.parseDouble(input[i]);
+					skip = i;
+				}
+			}
+			for(int i = 0; i < input.length - 1; i++){
+				if(i == skip) continue;
 				s.addGrade(Double.parseDouble(input[i]));
 			}
 		}
