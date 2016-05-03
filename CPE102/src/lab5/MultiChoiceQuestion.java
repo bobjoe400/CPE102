@@ -14,7 +14,7 @@ public class MultiChoiceQuestion extends Question {
 	}
 
 	public void addChoice(String answer, boolean correct) {
-		answers.put(answer, correct);
+		answers.put(answer, correct); 
 	}
 
 	public boolean checkAnswer(String answer) {
