@@ -1,9 +1,13 @@
 package lab2;
 
+import java.io.IOException;
+import java.util.Formattable;
+import java.util.Formatter;
+
 /**
  * A bank account has a balance that can be changed by deposits and withdrawals.
  */
-public class BankAccount {
+public class BankAccount implements Formattable {
 	private double balance;
 
 	/**
@@ -59,5 +63,20 @@ public class BankAccount {
 	 */
 	public void addInterest(double rate) {
 		balance*=(1+(rate/100));
+	}
+
+	@Override
+	public void formatTo(Formatter arg0, int arg1, int arg2, int arg3) {
+		Appendable a = arg0.out();
+		String bal = Double.toString(balance);
+		while(bal.length() < 10){
+			bal= " "+bal;
+		}
+		try {
+			a.append(bal);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
