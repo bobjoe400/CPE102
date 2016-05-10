@@ -34,7 +34,7 @@ public class Reverser {
 				String rev = "";
 				for(int i = s.length()-1; i >= 0; i--){
 					rev+=s.charAt(i);
-				}
+				 }
 				pr.write(rev);
 				pr.write("\n");
 			}
