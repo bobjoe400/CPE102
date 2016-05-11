@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.Formattable;
 import java.util.Formatter;
 
+import lab6.InsufficientFundsException;
+import lab6.NegativeAmountException;
+import lab6.NegativeBalanceException;
+
 /**
  * A bank account has a balance that can be changed by deposits and withdrawals.
  */
@@ -24,6 +28,9 @@ public class BankAccount implements Formattable {
 	 *            the initial balance
 	 */
 	public BankAccount(double initialBalance) {
+		if(initialBalance < 0){
+			throw new NegativeBalanceException();
+		}
 		balance = initialBalance;
 	}
 
@@ -34,6 +41,9 @@ public class BankAccount implements Formattable {
 	 *            the amount to deposit
 	 */
 	public void deposit(double amount) {
+		if(amount < 0){
+			throw new NegativeAmountException();
+		}
 		double newBalance = balance + amount;
 		balance = newBalance;
 	}
@@ -45,8 +55,12 @@ public class BankAccount implements Formattable {
 	 *            the amount to withdraw
 	 */
 	public void withdraw(double amount) {
+		
 		double newBalance = balance - amount;
 		balance = newBalance;
+		if(newBalance < 0){
+			throw new InsufficientFundsException();
+		}
 	}
 
 	/**
