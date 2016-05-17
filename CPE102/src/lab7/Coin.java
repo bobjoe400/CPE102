@@ -14,7 +14,7 @@ public class Coin {
 		this.value = value;
 		switch ((int) (value * 100)) {
 		case 5:
-			name = "nickle";
+			name = "nickel";
 			break;
 		case 10:
 			name = "dime";

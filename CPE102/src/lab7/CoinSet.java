@@ -37,10 +37,10 @@ public class CoinSet {
 			coins.put(DIME, coins.get(DIME) + 1);
 			break;
 		case "C":
-			coins.put(QUARTER, coins.get(DIME) + 1);
+			coins.put(QUARTER, coins.get(QUARTER) + 1);
 			break;
 		case "D":
-			coins.put(DOLLAR, coins.get(DIME) + 1);
+			coins.put(DOLLAR, coins.get(DOLLAR) + 1);
 			break;
 		}
 	}
@@ -60,8 +60,10 @@ public class CoinSet {
 		Iterator<Map.Entry<Coin, Integer>> it = coins.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry<Coin, Integer> pair = it.next();
+			System.out.println(pair);
 			sum += pair.getKey().getValue() * pair.getValue();
 		}
+		System.out.println(sum);
 		return sum;
 	}
 

@@ -20,7 +20,7 @@ public class VendingMachineMenu {
 		boolean b = true;
 		switch (s) {
 		case "S":
-			showProducts();
+			showProducts(false);
 			b = true;
 			break;
 		case "I":
@@ -46,7 +46,7 @@ public class VendingMachineMenu {
 		return b;
 	}
 
-	public void showProducts() {
+	public void showProducts(boolean b) {
 		Iterator<Map.Entry<Product, Integer>> it = v.getProducts().entrySet().iterator();
 		int counter = 0;
 		while (it.hasNext()) {
@@ -54,19 +54,22 @@ public class VendingMachineMenu {
 			if (pair.getValue() == 0) {
 				continue;
 			}
-			System.out.println((char)('A' + counter) + ") " +pair.getKey());
+			if(b){
+				System.out.println((char)('A' + counter) + ") " +pair.getKey());
+			}else{
+				System.out.println(pair.getKey());
+			}
 			counter++;
 		}
 	}
 
 	public void purchase() {
-		showProducts();
+		showProducts(true);
 		String s = input.nextLine();
 		ArrayList<Product> keys = new ArrayList<Product>(v.getProducts().keySet());
 		Product choice = keys.get(s.toUpperCase().charAt(0) - 'A');
 		if(v.purchase(choice)){
 			System.out.println("Purchased: " + choice);
 		}
-		input.close();
 	}
 }
